@@ -1,5 +1,6 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import {practiceRouter} from "@/router/practiceRouter";
+import {projectRouter} from "@/router/projectRouter";
 // import HomeComponent from "@/components/HomeComponent";
 // import GoogleLogin from "@/components/login/GoogleLogin";
 import Oauth2Callback from '@/components/login/OAuth2Callback.vue';
@@ -35,7 +36,8 @@ const routes = [
         name: 'Oauth2Callback',
         component: Oauth2Callback
     },
-    ...practiceRouter
+    ...practiceRouter,
+    ...projectRouter
 
 
 ]
