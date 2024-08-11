@@ -1,8 +1,15 @@
+import "devextreme/dist/css/dx.light.css";
 // src/main.js
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from '@/router/index.js'
+import { createApp } from "vue";
+import App from "./App.vue";
+import router from "@/router/index.js";
 import vuetify from "@/plugins/vuetify";
+import store from "./store";
+import BootstrapVue3 from 'bootstrap-vue-3'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue-3/dist/bootstrap-vue-3.css'
+import VueDatePicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css'
 import axios from "axios";
 
 const app = createApp(App);
@@ -10,7 +17,7 @@ const app = createApp(App);
 //axios 요청 인터셉터를 설정하여 모든 요청에 엑세스 토큰을 포함
 axios.interceptors.request.use(
     config => {
-        const token = localStorage.getItem('accessToken');
+        const token = localStorage.getItem('token');
         if(token){
             config.headers.Authorization = `Bearer ${token}`;
         }
@@ -25,4 +32,8 @@ axios.interceptors.request.use(
 
 app.use(router);
 app.use(vuetify);
+app.use(store);
+app.use(BootstrapVue3);
+app.component('VueDatePicker', VueDatePicker);
+
 app.mount('#app');
